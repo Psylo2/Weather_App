@@ -32,7 +32,7 @@ def index():
     weather = [city.get_weather() for city in CityModel.query.all()]
 
     if not weather:
-        flash("Please Add a CityModel!")
+        flash("Please Add a City!")
     return render_template('base.html', weather=reversed(weather))
 
 @app.route('/delete/<int:_id>', methods=['POST'])
@@ -40,7 +40,7 @@ def remove(_id: int):
     if request.method == 'POST':
         city = CityModel.find_by_id(_id)
         if not city:
-            flash("CityModel ID not exists")
+            flash("City ID not exists")
         city.delete_from_db()
         flash(f"{city.name.capitalize()} has been removed")
     return redirect('/')

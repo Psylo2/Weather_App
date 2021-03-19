@@ -44,7 +44,6 @@ class CityModel(db.Model):
             }
 
         except requests.HTTPError:
-            # flash("Invalid request, city name must be valid and exist!")
             return 1
 
         except requests.RequestException:

@@ -10,7 +10,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/weather.db'
 app.config['PROPAGATE_EXCEPTIONS'] = True
 app.secret_key = os.urandom(16).hex()
-API_KEY = "092e16492935f7d7e893c67b0912701f"
+API_KEY = "Your API KEY"
 db = SQLAlchemy(app)
 
 

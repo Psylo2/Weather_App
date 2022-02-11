@@ -26,19 +26,20 @@
         </form>
     </div>
     <div class="cards">
-    {% if weather.id != none %}
+    {% if weather.city_id != none %}
         {% for we in weather %}
 
         <div class="card {{ we.time }}">
             <div class="delete-wrapper">
                 <form action="#" method="POST">
                     <input type="hidden" name="id" value="">
-                    <button class="delete-button" type="submit" formaction="http://127.0.0.1:5000/delete/{{ we.id }}">&#10006;</button>
+                    <button class="delete-button" type="submit"
+                            formaction="http://127.0.0.1:5000/delete/{{ we.city_id }}">&#10006;</button>
                 </form>
             </div>
-            <div class="degrees"><span>{{ we.degrees }}<span class="celsius"> °C</span></span></div>
+            <div class="degrees"><span>{{ we.temperature_degrees }}<span class="celsius"> °C</span></span></div>
             <div class="state">{{ we.state }}</div>
-            <div class="city">{{ we.city }}</div>
+            <div class="city">{{ we.city_name }}</div>
         </div>
             {% endfor %}
     {% endif %}

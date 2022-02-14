@@ -14,6 +14,6 @@ class AppConfigurations(AppConfigurationService):
 
     def add_configurations(self) -> None:
         self.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-        self.app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+        self.app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('REPOSITORY_URI')
         self.app.config['PROPAGATE_EXCEPTIONS'] = True
         self.app.secret_key = os.environ.get('APP_SECRET_KEY')

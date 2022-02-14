@@ -4,3 +4,4 @@ python-dotenv~=0.15.0
 pydantic~=1.9.0
 requests~=2.25.1
 DateTime~=4.3
+uwsgi

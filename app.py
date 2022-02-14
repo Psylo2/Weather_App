@@ -15,13 +15,17 @@ app = Flask(__name__)
 AppConfigurations(app=app)
 
 repository.init_app(app=app)
-repository.create_all(app=app)
 
 factory = Factory()
 city_handler = CityHandler(factory=factory)
 city_blueprint.handler = city_handler
 
 app.register_blueprint(blueprint=city_blueprint)
+
+
+@app.before_first_request
+def create_tables():
+    repository.create_all(app=app)
 
 
 if __name__ == '__main__':

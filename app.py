@@ -14,8 +14,8 @@ from handlers import CityHandler
 app = Flask(__name__)
 AppConfigurations(app=app)
 
-repository.db.init_app(app=app)
-repository.db.create_all(app=app)
+repository.init_app(app=app)
+repository.create_all(app=app)
 
 factory = Factory()
 city_handler = CityHandler(factory=factory)
@@ -25,4 +25,4 @@ app.register_blueprint(blueprint=city_blueprint)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)

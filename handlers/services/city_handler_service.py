@@ -37,7 +37,7 @@ class CityHandlerService(ABC):
         ...
 
     @abstractmethod
-    def get_city_by_id(self, id: int) -> Dict:
+    def get_all_cities_current_weather(self) -> List[Dict]:
         ...
 
     @abstractmethod

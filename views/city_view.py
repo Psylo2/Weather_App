@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect
 
 
 city_blueprint = Blueprint('city', __name__)
@@ -21,4 +21,4 @@ def city_weather_post():
 @city_blueprint.post('/delete/<int:_id>')
 def city_weather_remove(_id: int):
     city_blueprint.handler.remove_city(_id=_id)
-    return city_weather_get()
+    return redirect('/')

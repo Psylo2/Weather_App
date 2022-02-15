@@ -86,7 +86,7 @@ class CityHandler(CityUseCase, CityHandlerService):
             flash("City ID not exists")
             return None
 
-        city.remove_from_repository()
+        self._city_repository.remove_city(city=city)
         flash("City has removed")
 
     def get_all_cities_current_weather(self) -> List[Dict]:

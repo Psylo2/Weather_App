@@ -4,9 +4,9 @@ import requests
 from datetime import datetime, timezone, timedelta
 from typing import Dict, List, Union
 
-from handlers.services import CityHandlerService
-from usecases.city_usecase import CityUseCase
-from models import CityEntity
+from application.handlers.services import CityHandlerService
+from application.usecases import CityUseCase
+from domain.models import CityEntity
 
 
 class CityHandler(CityUseCase, CityHandlerService):

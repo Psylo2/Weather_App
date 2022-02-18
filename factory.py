@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from repositories.controllers import CityRepositoryController
+from infrastructure.repositories.controllers import CityRepositoryController
 
 class FactoryService(ABC):
 

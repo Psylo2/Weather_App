@@ -1,7 +1,7 @@
 from typing import Dict, List, Union
 
-from repositories.city_repository import CityRepository
-from repositories.services import CityRepositoryService
+from infrastructure.repositories.city_repository import CityRepository
+from infrastructure.repositories.services import CityRepositoryService
 
 class CityRepositoryController(CityRepositoryService):
     def __init__(self):

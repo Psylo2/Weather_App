@@ -1,7 +1,7 @@
 from typing import Union, Dict
 
 from manager.manager_repository import repository
-from repositories.services import RepositoryService
+from infrastructure.repositories.services import RepositoryService
 
 
 class CityRepository(repository.Model, RepositoryService):

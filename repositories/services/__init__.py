@@ -1,2 +1,0 @@
-from repositories.services.repository_service import RepositoryService
-from repositories.services.city_repository_service import CityRepositoryService

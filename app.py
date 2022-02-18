@@ -7,8 +7,8 @@ from manager.manager_repository import repository
 from manager.app_configurations import AppConfigurations
 
 from factory import Factory
-from views.city_view import city_blueprint
-from handlers import CityHandler
+from infrastructure.views import city_blueprint
+from application.handlers import CityHandler
 
 
 app = Flask(__name__)
@@ -20,8 +20,10 @@ factory = Factory()
 city_handler = CityHandler(factory=factory)
 city_blueprint.handler = city_handler
 
-app.register_blueprint(blueprint=city_blueprint)
-
+try:
+    app.register_blueprint(blueprint=city_blueprint)
+except Exception as e:
+    print(e)
 
 @app.before_first_request
 def create_tables():

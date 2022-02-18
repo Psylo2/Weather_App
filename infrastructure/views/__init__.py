@@ -1,0 +1,1 @@
+from infrastructure.views.city_view import city_blueprint

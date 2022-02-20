@@ -1,5 +1,5 @@
 from infrastructure.queries import CityRepositoryQuery
-from application_core.services import FactoryService
+from application.core.services import FactoryService
 
 
 class Factory(FactoryService):

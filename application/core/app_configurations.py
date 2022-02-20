@@ -1,6 +1,6 @@
 import os
 
-from application_core.services import AppConfigurationService
+from application.core.services import AppConfigurationService
 
 
 class AppConfigurations(AppConfigurationService):

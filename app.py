@@ -8,9 +8,7 @@ from presentation.controllers import city_blueprint
 
 from infrastructure.adapters import repository
 
-from application_core.app_configurations import AppConfigurations
-from application_core.factory import Factory
-
+from application.core import Factory, AppConfigurations
 from application.handlers import CityHandler
 
 

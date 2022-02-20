@@ -1,17 +1,23 @@
+from flask import Flask
 from dotenv import load_dotenv
 
 load_dotenv(".env", verbose=True)
 
-from flask import Flask
-from manager.manager_repository import repository
-from manager.app_configurations import AppConfigurations
 
-from factory import Factory
-from infrastructure.views import city_blueprint
+from presentation.controllers import city_blueprint
+
+from infrastructure.adapters import repository
+
+from application_core.app_configurations import AppConfigurations
+from application_core.factory import Factory
+
 from application.handlers import CityHandler
 
 
-app = Flask(__name__)
+app = Flask(__name__,
+            static_folder='presentation/gui/static',
+            template_folder='presentation/gui/templates')
+
 AppConfigurations(app=app)
 
 repository.init_app(app=app)
@@ -20,10 +26,9 @@ factory = Factory()
 city_handler = CityHandler(factory=factory)
 city_blueprint.handler = city_handler
 
-try:
-    app.register_blueprint(blueprint=city_blueprint)
-except Exception as e:
-    print(e)
+
+app.register_blueprint(blueprint=city_blueprint)
+
 
 @app.before_first_request
 def create_tables():

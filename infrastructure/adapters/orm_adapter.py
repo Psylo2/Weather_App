@@ -1,10 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 
-
-class RepositoryManager:
+class ORMAdapter:
 
     def __new__(cls, *args, **kwargs):
         return SQLAlchemy()
-
-
-repository = RepositoryManager()

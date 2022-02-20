@@ -6,14 +6,14 @@ from typing import Dict, List, Union
 
 from application.handlers.services import CityHandlerService
 from application.usecases import CityUseCase
-from domain.models import CityEntity
+from domain.entities import CityEntity
 
 
 class CityHandler(CityUseCase, CityHandlerService):
 
     def __init__(self, factory):
         self._factory = factory
-        self._city_repository = factory.get_city_repository()
+        self._city_repository = factory.query_city_repository()
 
     @property
     def api_url(self) -> str:

@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import Dict, List, Union
 
 
-class CityRepositoryService(ABC):
+class CityRepositoryQueryService(ABC):
 
     @abstractmethod
     def add_city(self, city_data: Dict) -> "CityRepository":

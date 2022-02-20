@@ -1,9 +1,9 @@
 from typing import Dict, List, Union
 
-from infrastructure.repositories.city_repository import CityRepository
-from infrastructure.repositories.services import CityRepositoryService
+from infrastructure.ports.city_repository_port import CityRepository
+from infrastructure.queries.services import CityRepositoryQueryService
 
-class CityRepositoryController(CityRepositoryService):
+class CityRepositoryQuery(CityRepositoryQueryService):
     def __init__(self):
         pass
 
@@ -19,7 +19,7 @@ class CityRepositoryController(CityRepositoryService):
         all_cities = CityRepository.query.all()
         return [city.dict() for city in all_cities]
 
-    def get_city_by_id(self, id: int) -> Union["CityRepository", None]:
+    def get_city_by_id(self, id: int) -> Union[CityRepository, None]:
         return CityRepository.query.filter_by(id=id).first()
 
     def get_all_cities_name_list(self) -> List[str]:

@@ -2,7 +2,7 @@ from abc import abstractmethod
 from typing import Dict
 
 
-class RepositoryService:
+class CityRepositoryPortService:
 
     @abstractmethod
     def add_to_repository(self) -> None:

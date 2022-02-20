@@ -1,10 +1,10 @@
 from typing import Union, Dict
 
-from manager.manager_repository import repository
-from infrastructure.repositories.services import RepositoryService
+from infrastructure.adapters.persistence_adapter import repository
+from infrastructure.ports.services import CityRepositoryPortService
 
 
-class CityRepository(repository.Model, RepositoryService):
+class CityRepository(repository.Model, CityRepositoryPortService):
     __tablename__ = 'city'
     id = repository.Column(repository.Integer, primary_key=True, autoincrement=True)
     name = repository.Column(repository.String(30), unique=True, nullable=False)
@@ -24,4 +24,3 @@ class CityRepository(repository.Model, RepositoryService):
     def dict(self) -> Dict:
         return {"id": self.id,
                 "name": self.name}
-

@@ -1,0 +1,1 @@
+from infrastructure.queries.city_repository_query import CityRepositoryQuery

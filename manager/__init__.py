@@ -1,1 +1,0 @@
-from manager.app_configurations import AppConfigurations

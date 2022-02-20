@@ -1,0 +1,1 @@
+from infrastructure.adapters.persistence_adapter import repository

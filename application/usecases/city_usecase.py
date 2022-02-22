@@ -9,3 +9,7 @@ class CityUseCase(ABC):
     @abstractmethod
     def remove_city(self, _id: int) -> bool:
         ...
+        
+    @abstractmethod
+    def get_all_cities_current_weather(self) -> List[Dict]:
+        ...

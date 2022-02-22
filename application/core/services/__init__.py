@@ -1,2 +1,1 @@
-from application.core.services.factory_service import FactoryService
 from application.core.services.app_configuration_service import AppConfigurationService

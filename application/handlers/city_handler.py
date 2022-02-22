@@ -4,6 +4,7 @@ import requests
 from datetime import datetime, timezone, timedelta
 from typing import Dict, List, Union
 
+from infrastructure.queries.services import CityRepositoryQueryService
 from application.handlers.services import CityHandlerService
 from application.usecases import CityUseCase
 from domain.entities import CityEntity
@@ -11,9 +12,8 @@ from domain.entities import CityEntity
 
 class CityHandler(CityUseCase, CityHandlerService):
 
-    def __init__(self, factory):
-        self._factory = factory
-        self._city_repository = factory.query_city_repository()
+    def __init__(self, city_repository_queries_service: CityRepositoryQueryService):
+        self.city_repository_queries_service = city_repository_queries_service
 
     @property
     def api_url(self) -> str:
@@ -61,7 +61,7 @@ class CityHandler(CityUseCase, CityHandlerService):
             return None
 
     def get_all_cities_from_repository(self) -> List[Dict]:
-        return self._city_repository.get_all_cities()
+        return self.city_repository_queries_service.get_all_cities()
 
     def register_city(self, city_name: str) -> None:
         city = CityEntity(name=city_name)
@@ -72,21 +72,21 @@ class CityHandler(CityUseCase, CityHandlerService):
             flash("The city doesn't exist!")
             return None
 
-        is_city_in_repository = global_city_name in self._city_repository.get_all_cities_name_list()
+        is_city_in_repository = global_city_name in self.city_repository_queries_service.get_all_cities_name_list()
         if is_city_in_repository:
             flash("The city has already been added to the list!")
             return None
 
         city.name = global_city_name
-        self._city_repository.add_city(city.dict())
+        self.city_repository_queries_service.add_city(city.dict())
 
     def remove_city(self, _id: int) -> None:
-        city = self._city_repository.get_city_by_id(id=_id)
+        city = self.city_repository_queries_service.get_city_by_id(id=_id)
         if not city:
             flash("City ID not exists")
             return None
 
-        self._city_repository.remove_city(city=city)
+        self.city_repository_queries_service.remove_city(city=city)
         flash("City has removed")
 
     def get_all_cities_current_weather(self) -> List[Dict]:

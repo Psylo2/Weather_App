@@ -17,7 +17,7 @@ class CityRepositoryQueryService(ABC):
         ...
 
     @abstractmethod
-    def get_city_by_id(self, _id: int) -> Union["CityRepository", None]:
+    def get_city_by_id(self, id: int) -> Union["CityRepository", None]:
         ...
 
     @abstractmethod
